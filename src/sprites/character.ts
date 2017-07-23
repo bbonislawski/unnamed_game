@@ -6,26 +6,28 @@ export class Character extends Phaser.Sprite {
     super(game, x, y, 'avt1_fr1')
 
     this.game = game
+    window.dupa = this;
   }
 
   update() {
     let cursors = this.game.input.keyboard.createCursorKeys();
+    this.body.setZeroVelocity();
 
     if(cursors.left.isDown) {
-      this.x += -this.movingSpeed();
+      this.body.moveLeft(this.movingSpeed());
     }
     else if(cursors.right.isDown) {
-      this.x += this.movingSpeed();
+      this.body.moveRight(this.movingSpeed());
     }
     if(cursors.up.isDown) {
-      this.y += -this.movingSpeed();
+      this.body.moveUp(this.movingSpeed());
     }
     else if(cursors.down.isDown) {
-      this.y += this.movingSpeed();
+      this.body.moveDown(this.movingSpeed());
     }
   }
 
   movingSpeed() {
-    return 2;
+    return 200;
   }
 }
